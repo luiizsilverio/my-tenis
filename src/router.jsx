@@ -19,6 +19,7 @@ function Routes() {
         <Stack.Screen
           name="detail"
           component={Detail}
+          options={{ title: 'Detalhes' }}
         />
       </Stack.Navigator>
     </NavigationContainer>
