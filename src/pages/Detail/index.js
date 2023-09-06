@@ -1,12 +1,18 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { View, Text, Image, ScrollView, StyleSheet } from 'react-native';
+
 import Dot from '../../components/Dot';
+import SizeButton from '../../components/SizeButton';
+import MyButton from '../../components/MyButton';
+import Footer from '../../components/Footer';
 
 export function Detail({ navigation }) {
 
-  navigation.setOptions({
-    headerTitle: 'Nike Air Max Dia'
-  })
+  useEffect(() => {
+    navigation.setOptions({
+      headerTitle: 'Nike Air Max Dia'
+    })
+  }, [])
 
   return (
     <ScrollView style={styles.container}>
@@ -30,8 +36,31 @@ export function Detail({ navigation }) {
           <Dot color="#000" />
         </View>
 
+        <View style={{flexDirection: 'row', width: '100%'}}>
+          <ScrollView horizontal showsHorizontalScrollIndicator={false}>
+            <SizeButton>39</SizeButton>
+            <SizeButton bgColor="#17181a" color="#FFF">40</SizeButton>
+            <SizeButton>41</SizeButton>
+            <SizeButton>42</SizeButton>
+          </ScrollView>
+        </View>
 
+        <View style={styles.textContent}>
+          <Text style={styles.textTitle}>Nike Air Max Dia</Text>
+          <Text style={styles.textContent}>
+            O tênis Nike Air Max Dia traz amortecimento e muito Lorem ipsum dolor sit, amet consectetur adipisicing elit.
+          </Text>
+          <Text style={styles.textList}>- Categoria: Amortecimento</Text>
+          <Text style={styles.textList}>- Material: mesh</Text>
+        </View>
       </View>
+
+      <MyButton>COMPRAR</MyButton>
+
+      <View style={styles.line} />
+
+      <Footer />
+
     </ScrollView>
   );
 }
@@ -43,7 +72,8 @@ const styles = StyleSheet.create({
     backgroundColor: '#FFF'
   },
   image: {
-    width: '100%'
+    width: '100%',
+    maxHeight: 320
   },
   title: {
     fontFamily: 'Anton_400Regular',
@@ -52,6 +82,24 @@ const styles = StyleSheet.create({
   dotContainer: {
     flexDirection: 'row',
     marginVertical: '7%'
-
+  },
+  textContent: {
+    fontSize: 16,
+    lineHeight: 25,
+    marginVertical: '2%',
+    paddingHorizontal: '2%'
+  },
+  textTitle: {
+    fontSize: 22,
+    marginVertical: '2%'
+  },
+  textList: {
+    fontSize: 16,
+    lineHeight: 25
+  },
+  line: {
+    borderWidth: 1,
+    borderBottomColor: '#DDD',
+    marginVertical: '2%'
   }
 })
